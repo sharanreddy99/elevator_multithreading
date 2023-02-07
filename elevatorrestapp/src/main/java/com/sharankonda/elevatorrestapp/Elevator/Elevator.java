@@ -65,7 +65,7 @@ public class Elevator {
     }
 
     public synchronized void produce(int val) {
-        if (!(val >= 0 && val <= this.maxFloors) || getCurrentFloor() == val)
+        if (!(val >= 0 && val < this.maxFloors) || getCurrentFloor() == val)
             return;
 
         this.q.add(val);
@@ -145,6 +145,7 @@ public class Elevator {
         while (minHeap.size() == 0) {
             if (getCurrentFloor() > 0) {
                 this.direction = Direction.NONE;
+                this.display.setDisplay(direction, currentFloor, false);
                 return;
             }
             wait();
@@ -170,6 +171,7 @@ public class Elevator {
         while (maxHeap.size() == 0) {
             if (getCurrentFloor() >= 0) {
                 this.direction = Direction.NONE;
+                this.display.setDisplay(direction, currentFloor, false);
                 return;
             }
             wait();

@@ -11,7 +11,7 @@ public class Display {
 
     public Display(int elevatorId) {
         this.elevatorId = elevatorId;
-        this.floor = 1;
+        this.floor = 0;
         this.direction = Direction.NONE;
         this.isBoarding = false;
     }

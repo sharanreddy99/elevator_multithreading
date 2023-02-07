@@ -1,0 +1,8 @@
+.base_container {
+  width: 95%;
+  height: 70vh;
+  border: 1px solid black;
+  box-shadow: 5px 10px 8px #888888;
+  margin: 2%;
+  overflow: scroll;
+}

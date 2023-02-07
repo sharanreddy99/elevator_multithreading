@@ -9,12 +9,12 @@ public class BasicExternalElevatorDispatcher extends ExternalElevatorDispatcher 
     }
 
     public void submitRequest(int floor, Direction direction) {
-        int elevatorId = firstMinNearby(floor, direction);
+        int elevatorId = firstIdle();
         if (elevatorId != -1) {
             this.elevatorManagers[elevatorId].submitRequest(floor);
         }
 
-        elevatorId = firstIdle();
+        elevatorId = firstMinNearby(floor, direction);
         if (elevatorId != -1) {
             this.elevatorManagers[elevatorId].submitRequest(floor);
         }
