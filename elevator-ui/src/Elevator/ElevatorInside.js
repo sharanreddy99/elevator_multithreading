@@ -21,10 +21,13 @@ const ElevatorInside = ({ floor, liftSpeed, elevatorId, loopUntillNone }) => {
     const elevatorCurrId = elevatorObj.elevatorId;
     setTimeout(async () => {
       alert(JSON.stringify(elevatorObj));
-      await axios.post("http://localhost:8080/lifts/move", {
-        floor: floorCurrId,
-        elevator: elevatorCurrId,
-      });
+      await axios.post(
+        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts/move",
+        {
+          floor: floorCurrId,
+          elevator: elevatorCurrId,
+        }
+      );
       loopUntillNone();
     }, liftSpeed + 500);
   };
@@ -36,7 +39,6 @@ const ElevatorInside = ({ floor, liftSpeed, elevatorId, loopUntillNone }) => {
   };
 
   useEffect(() => {
-    console.log(floor + "-" + elevatorId);
     setElevatorObj({
       floor: floor,
       elevatorId: elevatorId,

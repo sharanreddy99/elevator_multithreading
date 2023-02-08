@@ -22,7 +22,6 @@ const Floor = ({
       }
     }
     setFloorData(tempData);
-    console.log("Entered useEffect");
   }, [displayArr]);
 
   return (

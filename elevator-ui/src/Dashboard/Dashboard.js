@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   const initializeBuildingHandler = async () => {
     const resp = await axios.post(
-      "http://localhost:8080/initializeBuilding",
+      process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/initializeBuilding",
       building
     );
 
@@ -33,23 +33,26 @@ const Dashboard = () => {
     setBuilding(data);
 
     if (resp.data?.status === "SUCCESS") {
-      const resp = await axios.get("http://localhost:8080/lifts");
+      const resp = await axios.get(
+        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts"
+      );
       setDisplayArr(resp.data);
     }
   };
 
   const loopUntillNone = async () => {
     var timer = setInterval(async () => {
-      console.log("Inside loop");
-      const resp = await axios.get("http://localhost:8080/lifts");
-      console.log(resp.data);
+      // console.log("Inside loop");
+      const resp = await axios.get(
+        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts"
+      );
       let allIdleLifts = resp.data.every((row) => {
         return row["direction"] === "NONE";
       });
       setDisplayArr(resp.data);
 
       if (allIdleLifts) {
-        console.log("clearing loop");
+        // console.log("clearing loop");
         clearInterval(timer);
       }
     }, building.liftSpeed);

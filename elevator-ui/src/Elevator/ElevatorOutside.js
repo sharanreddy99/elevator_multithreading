@@ -14,10 +14,13 @@ import axios from "axios";
 const ElevatorOutside = ({ floor, liftSpeed, loopUntillNone }) => {
   const requestLift = async (direction) => {
     setTimeout(async () => {
-      await axios.post("http://localhost:8080/lifts/request", {
-        floor: floor,
-        direction: direction,
-      });
+      await axios.post(
+        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts/request",
+        {
+          floor: floor,
+          direction: direction,
+        }
+      );
       loopUntillNone();
     }, liftSpeed + 500);
   };

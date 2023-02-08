@@ -2,6 +2,20 @@ version: "3"
 services:
   api:
     build:
-      context: .
+      context: ./elevatorrestapp
     volumes:
-      - ./:/app
+      - ./elevatorrestapp:/elevatorrestapp
+    ports:
+      - ${POLLS_VIEWER_BACKEND_PORT}:8080
+  ui:
+    build:
+      context: ./elevator-ui
+    environment:
+      POLLS_VIEWER_BACKEND_HOST: "${POLLS_VIEWER_BACKEND_HOST}"
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+    volumes:
+      - ./elevator-ui:/app
+      - /app/node_modules
