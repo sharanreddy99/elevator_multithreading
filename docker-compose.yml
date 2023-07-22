@@ -13,7 +13,7 @@ services:
     environment:
       POLLS_VIEWER_BACKEND_HOST: "${POLLS_VIEWER_BACKEND_HOST}"
     ports:
-      - 3000:3000
+      - 8080:3000
     depends_on:
       - api
     volumes:
