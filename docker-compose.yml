@@ -6,14 +6,14 @@ services:
     volumes:
       - ./elevatorrestapp:/elevatorrestapp
     ports:
-      - ${POLLS_VIEWER_BACKEND_PORT}:8080
+      - ${ELEVATOR_MULTITHREADING_BACKEND_PORT}:8080
   ui:
     build:
       context: ./elevator-ui
     environment:
-      POLLS_VIEWER_BACKEND_HOST: "${POLLS_VIEWER_BACKEND_HOST}"
+      ELEVATOR_MULTITHREADING_BACKEND_HOST: "${ELEVATOR_MULTITHREADING_BACKEND_HOST}"
     ports:
-      - 80:3000
+      - ${ELEVATOR_MULTITHREADING_FRONTEND_PORT}:3000
     depends_on:
       - api
     volumes:
