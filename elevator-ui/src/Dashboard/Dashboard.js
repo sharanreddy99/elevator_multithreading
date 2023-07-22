@@ -24,7 +24,8 @@ const Dashboard = () => {
 
   const initializeBuildingHandler = async () => {
     const resp = await axios.post(
-      process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/initializeBuilding",
+      process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST +
+        "/initializeBuilding",
       building
     );
 

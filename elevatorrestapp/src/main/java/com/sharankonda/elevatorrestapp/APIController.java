@@ -18,7 +18,7 @@ public class APIController {
 
 	// private final AtomicLong counter = new AtomicLong();
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@PostMapping("/initializeBuilding")
 	public BuildingType createBuiling(@RequestBody BuildingType buildingInpObj) {
 		try {
@@ -32,13 +32,13 @@ public class APIController {
 		return buildingInpObj;
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@GetMapping("/lifts")
 	public DisplayType[] getLifts() {
 		return this.building.getLifts();
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@PostMapping("/lifts/request")
 	public RequestLiftType requestLift(@RequestBody RequestLiftType requestLiftObj) {
 		try {
@@ -51,7 +51,7 @@ public class APIController {
 		return requestLiftObj;
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@PostMapping("/lifts/move")
 	public MoveLiftType moveLift(@RequestBody MoveLiftType moveLiftObj) {
 		try {
