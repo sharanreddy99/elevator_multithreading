@@ -22,7 +22,7 @@ const ElevatorInside = ({ floor, liftSpeed, elevatorId, loopUntillNone }) => {
     setTimeout(async () => {
       alert(JSON.stringify(elevatorObj));
       await axios.post(
-        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts/move",
+        process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/lifts/move",
         {
           floor: floorCurrId,
           elevator: elevatorCurrId,

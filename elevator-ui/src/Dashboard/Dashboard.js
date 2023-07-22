@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   const initializeBuildingHandler = async () => {
     const resp = await axios.post(
-      process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/initializeBuilding",
+      process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/initializeBuilding",
       building
     );
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
     if (resp.data?.status === "SUCCESS") {
       const resp = await axios.get(
-        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts"
+        process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/lifts"
       );
       setDisplayArr(resp.data);
     }
@@ -44,7 +44,7 @@ const Dashboard = () => {
     var timer = setInterval(async () => {
       // console.log("Inside loop");
       const resp = await axios.get(
-        process.env.REACT_APP_POLLS_VIEWER_BACKEND_HOST + "/lifts"
+        process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/lifts"
       );
       let allIdleLifts = resp.data.every((row) => {
         return row["direction"] === "NONE";
