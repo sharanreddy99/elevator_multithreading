@@ -10,12 +10,23 @@ services:
   ui:
     build:
       context: ./elevator-ui
-    environment:
-      ELEVATOR_MULTITHREADING_BACKEND_HOST: "${ELEVATOR_MULTITHREADING_BACKEND_HOST}"
     ports:
       - ${ELEVATOR_MULTITHREADING_FRONTEND_PORT}:3000
     depends_on:
       - api
+    environment:
+      REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST: "${ELEVATOR_MULTITHREADING_BACKEND_HOST}"
     volumes:
       - ./elevator-ui:/app
       - /app/node_modules
+
+  nginx:
+      depends_on:
+        - api
+        - ui
+      restart: always
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+        - ${ELEVATOR_MULTITHREADING_NGINX_PORT}:80
