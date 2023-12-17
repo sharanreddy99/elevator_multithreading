@@ -1,3 +1,3 @@
-# Elevator System built using multi-threading in JAVA
+# Mult Elevator System
 
-### A multi system elevator which uses a separate thread for each elevator and runs independent of others. A react web app which demonstrates how the multiple elevators actually work when operated parallelly.
+Experience seamless elevator operations with our multi-floor, multi-elevator application. Utilizing Java multithreading, it simulates parallel elevator actions in near real time. The user-friendly interface enables control both inside and outside the lifts, incorporating three closest floor algorithms for optimal lift assignments.
