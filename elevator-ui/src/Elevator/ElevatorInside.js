@@ -20,7 +20,6 @@ const ElevatorInside = ({ floor, liftSpeed, elevatorId, loopUntillNone }) => {
     const floorCurrId = elevatorObj.floor;
     const elevatorCurrId = elevatorObj.elevatorId;
     setTimeout(async () => {
-      alert(JSON.stringify(elevatorObj));
       await axios.post(
         process.env.REACT_APP_ELEVATOR_MULTITHREADING_BACKEND_HOST + "/lifts/move",
         {
